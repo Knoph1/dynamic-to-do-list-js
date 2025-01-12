@@ -1,17 +1,49 @@
--- Use the alx_book_store database
+-- Create database if not exists
+CREATE DATABASE IF NOT EXISTS alx_book_store;
+
+-- Use the created database
 USE alx_book_store;
 
--- Query to get the description of the 'Books' table 
--- without using DESCRIBE or EXPLAIN
-SELECT 
-  COLUMN_NAME AS 'Column Name', 
-  COLUMN_TYPE AS 'Data Type', 
-  IS_NULLABLE AS 'Is Nullable', 
-  COLUMN_KEY AS 'Key', 
-  COLUMN_DEFAULT AS 'Default Value', 
-  EXTRA AS 'Extra Information'
-FROM 
-  INFORMATION_SCHEMA.COLUMNS
-WHERE 
-  TABLE_SCHEMA = 'alx_book_store'
-  AND TABLE_NAME = 'Books';
+-- Creating the Authors table
+CREATE TABLE IF NOT EXISTS Authors (
+    author_id INT AUTO_INCREMENT PRIMARY KEY,
+    author_name VARCHAR(215) NOT NULL
+);
+
+-- Creating the Books table
+CREATE TABLE IF NOT EXISTS Books (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(130) NOT NULL,
+    author_id INT,
+    price DECIMAL(10, 2) NOT NULL,
+    publication_date DATE,
+    FOREIGN KEY (author_id) REFERENCES Authors(author_id)
+);
+
+-- Creating the Customers table
+CREATE TABLE IF NOT EXISTS Customers (
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(215) NOT NULL,
+    email VARCHAR(215) NOT NULL UNIQUE,
+    address TEXT
+);
+
+-- Creating the Orders table
+CREATE TABLE IF NOT EXISTS Orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT,
+    order_date DATE NOT NULL,
+    total_amount DECIMAL(10, 2),
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
+);
+
+-- Creating the Order_Details table
+CREATE TABLE IF NOT EXISTS Order_Details (
+    order_detail_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    book_id INT,
+    quantity INT NOT NULL,
+    unit_price DECIMAL(10, 2),
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id),
+    FOREIGN KEY (book_id) REFERENCES Books(book_id)
+);
