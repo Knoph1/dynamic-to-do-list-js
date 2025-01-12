@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS order_details (
     order_detail_id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT,
     book_id INT,
-    quantity INT NOT NULL,
+    quantity INT NOT NULL, -- Corrected to INT for quantity
     unit_price DECIMAL(10, 2),
     FOREIGN KEY (order_id) REFERENCES orders(order_id),
     FOREIGN KEY (book_id) REFERENCES books(book_id)
