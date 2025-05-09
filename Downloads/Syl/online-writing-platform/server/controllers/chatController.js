@@ -1,0 +1,1 @@
+// chatController.js placeholder

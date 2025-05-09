@@ -1,0 +1,1 @@
+// authRoutes.js placeholder
