@@ -22,7 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Create a remove button
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Remove';
-        removeButton.className = 'remove-btn';
+
+        // ✅ Use classList.add (as required)
+        removeButton.classList.add('remove-btn');
 
         // Remove task on click
         removeButton.onclick = () => {
@@ -47,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function saveTasks() {
         const tasks = [];
         taskList.querySelectorAll('li').forEach(li => {
-            tasks.push(li.firstChild.textContent); // Exclude the button
+            tasks.push(li.firstChild.textContent); // Exclude the button text
         });
         localStorage.setItem('todoTasks', JSON.stringify(tasks));
     }
@@ -61,7 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const removeButton = document.createElement('button');
             removeButton.textContent = 'Remove';
-            removeButton.className = 'remove-btn';
+
+            // ✅ Use classList.add here too
+            removeButton.classList.add('remove-btn');
+
             removeButton.onclick = () => {
                 taskList.removeChild(li);
                 saveTasks();
@@ -72,16 +77,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Event listener for button click
+    // ✅ Add task when button is clicked
     addButton.addEventListener('click', addTask);
 
-    // Allow pressing "Enter" key to add a task
+    // ✅ Add task on pressing "Enter"
     taskInput.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
             addTask();
         }
     });
 
-    // Load tasks on startup
+    // ✅ Load saved tasks when page loads
     loadTasks();
 });
