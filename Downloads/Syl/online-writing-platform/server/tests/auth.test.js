@@ -1,1 +1,0 @@
-// auth.test.js placeholder
