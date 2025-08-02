@@ -18,7 +18,7 @@ This project is open-source and free to use under the MIT License.
 
 ## 📬 Author
 
-👨‍💻 Developed by Knoph O. Ayieko
+👨‍💻 Developed by: **Knoph O. Ayieko**
 
 🔗 GitHub: Knoph1
 
