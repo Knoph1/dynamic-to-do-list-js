@@ -1,1 +1,0 @@
-// transactionModel.js placeholder
