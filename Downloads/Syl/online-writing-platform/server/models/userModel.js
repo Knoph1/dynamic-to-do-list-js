@@ -1,1 +1,0 @@
-// userModel.js placeholder

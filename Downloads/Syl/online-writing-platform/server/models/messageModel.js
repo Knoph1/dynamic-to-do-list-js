@@ -1,1 +1,0 @@
-// messageModel.js placeholder
