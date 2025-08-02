@@ -1,4 +1,4 @@
-# To-Do List
+# Dynamic To-Do List
 
 ## 🧪 What This Application Can Do:
 
